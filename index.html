@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ENG.2 Quiz Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --paper:#f3f6fb; --card:#ffffff; --ink:#14213d; --muted:#5b6782; --line:#d9e0ec; --grid:#e6ecf5;
+  --force:#2f5bd3; --disp:#c98a00; --pos:#1f8a5b; --neg:#c8372d; --zero:#7a849a;
+  --ke:#e07a1f; --pe:#2f8f5b; --th:#c8372d; --soft:#eaf0fb;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0f1626; --card:#172035; --ink:#e7ecf7; --muted:#9aa6c2; --line:#2a3653; --grid:#1f2a43;
+    --force:#7aa0ff; --disp:#f0b93a; --pos:#4cc58c; --neg:#ff6b5e; --zero:#8f9ab3;
+    --ke:#ff9d4d; --pe:#4cc58c; --th:#ff6b5e; --soft:#1d2945;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0f1626; --card:#172035; --ink:#e7ecf7; --muted:#9aa6c2; --line:#2a3653; --grid:#1f2a43;
+  --force:#7aa0ff; --disp:#f0b93a; --pos:#4cc58c; --neg:#ff6b5e; --zero:#8f9ab3;
+  --ke:#ff9d4d; --pe:#4cc58c; --th:#ff6b5e; --soft:#1d2945;
+  color-scheme: dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,sans-serif;font-size:16.5px;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
+a{color:var(--force)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--force);outline-offset:2px;border-radius:6px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line)}
+.top nav{max-width:1100px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;padding:10px 16px;scrollbar-width:none}
+.top nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px}
+.top nav a:hover{background:var(--soft);color:var(--ink)}
+main{max-width:1100px;margin:0 auto;padding:0 16px 80px}
+.hero{padding:44px 0 18px;display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.08;margin:0 0 14px;font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--muted);margin:0 0 10px;max-width:56ch}
+.formula-strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:600;font-size:15px}
+section{padding:34px 0 10px;border-top:1px solid var(--line);margin-top:26px}
+.sec-head{display:flex;gap:14px;align-items:baseline}
+.sec-num{font-weight:800;color:var(--force);font-size:15px;min-width:28px}
+h2{font-size:clamp(23px,3.4vw,31px);line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+h3{font-size:18.5px;margin:22px 0 6px}
+.lead{color:var(--muted);max-width:68ch;margin:0 0 14px}
+.prose{max-width:70ch}
+.prose p{margin:8px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.lab{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}
+.lab h4{margin:0 0 4px;font-size:16px}
+.lab .hint{color:var(--muted);font-size:14px;margin:0 0 10px}
+.lab svg{width:100%;height:auto;display:block;touch-action:none;user-select:none}
+.ctrl{display:grid;grid-template-columns:118px 1fr 70px;gap:10px;align-items:center;margin:6px 0;font-size:14.5px}
+.ctrl input[type=range]{width:100%;accent-color:var(--force)}
+.ctrl output{font-weight:700;text-align:right}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:7px 12px;cursor:pointer;font-weight:600;font-size:14px}
+.btn:hover{border-color:var(--force)}
+.btn.on{background:var(--force);color:#fff;border-color:var(--force)}
+.readout{background:var(--soft);border-radius:12px;padding:10px 14px;margin-top:10px;font-size:15px}
+.readout b{font-weight:800}
+.big{font-size:22px;font-weight:800}
+.pos{color:var(--pos)}.neg{color:var(--neg)}.zero{color:var(--zero)}
+.note{border-left:4px solid var(--force);background:var(--card);padding:10px 14px;border-radius:0 12px 12px 0;margin:12px 0}
+.trap{border-left-color:var(--neg)}
+.key{border-left-color:var(--pos)}
+.note p{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:13.5px}
+.tblwrap{overflow-x:auto}
+.vocab{display:inline-block;font-size:13px;font-weight:600;color:var(--muted);background:var(--soft);border-radius:6px;padding:0 6px;margin-left:4px}
+.bars{display:flex;gap:14px;align-items:flex-end;height:150px;padding:6px 4px 0;border-bottom:2px solid var(--line)}
+.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.bar i{display:block;width:70%;border-radius:8px 8px 0 0;transition:height .08s linear}
+.barlab{display:flex;gap:14px;font-size:13px;color:var(--muted);text-align:center}
+.barlab span{flex:1}
+/* quiz */
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.dots{display:flex;gap:5px;flex-wrap:wrap}
+.dot{width:24px;height:24px;border-radius:50%;border:1px solid var(--line);font-size:11.5px;display:grid;place-items:center;cursor:pointer;background:var(--paper);font-weight:700}
+.dot.cur{border-color:var(--force);border-width:2px}
+.dot.ok{background:var(--pos);color:#fff;border-color:var(--pos)}
+.dot.bad{background:var(--neg);color:#fff;border-color:var(--neg)}
+.qtext{font-weight:600;margin:14px 0 10px}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:9px 12px;margin:6px 0;cursor:pointer}
+.opt:hover{border-color:var(--force)}
+.opt.right{border-color:var(--pos);background:color-mix(in srgb,var(--pos) 14%,var(--card))}
+.opt.wrong{border-color:var(--neg);background:color-mix(in srgb,var(--neg) 12%,var(--card))}
+.explain{margin-top:12px;display:none}
+.explain.show{display:block}
+.score{font-weight:700}
+footer{color:var(--muted);font-size:14px;text-align:center;padding:30px 0}
+@media (max-width:800px){
+  .hero,.cols{grid-template-columns:1fr}
+  .ctrl{grid-template-columns:96px 1fr 60px}
+}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px 80px}
+.head{padding:34px 0 10px}
+.head h1{font-size:clamp(28px,4.6vw,44px);line-height:1.1;margin:0 0 10px;font-weight:800;letter-spacing:-.02em}
+.head p{color:var(--muted);margin:0 0 8px;max-width:70ch}
+.sc{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:16px}
+.qgrid{display:grid;grid-template-columns:1fr 1.05fr;gap:22px;align-items:start}
+@media (max-width:860px){.qgrid{grid-template-columns:1fr}}
+.qnum{font-weight:800;color:var(--force);font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+.qtag{display:inline-block;font-size:12.5px;font-weight:600;color:var(--muted);background:var(--soft);border-radius:6px;padding:1px 8px;margin-left:6px}
+.qtext{font-size:17px;margin:8px 0 6px}
+.exp{display:none;border-left:4px solid var(--pos);background:var(--soft);padding:10px 14px;border-radius:0 12px 12px 0;margin-top:10px}
+.exp.show{display:block}.exp p{margin:5px 0}
+.hint{display:none;border-left:4px solid var(--disp);background:var(--soft);padding:10px 14px;border-radius:0 12px 12px 0;margin-top:10px}
+.formula{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;background:var(--soft);border-radius:12px;padding:10px 14px;margin-top:10px;line-height:1.7;overflow-x:auto}
+.formula .v{color:var(--force);font-weight:700}
+.formula .r{color:var(--pos);font-weight:800}
+.formula .n{color:var(--neg);font-weight:800}
+.labtitle{font-weight:800;margin:0 0 2px}
+.labhint{color:var(--muted);font-size:14px;margin:0 0 8px}
+.barsv{width:100%;height:auto;display:block}
+.chk{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chk label{border:1px solid var(--line);border-radius:10px;padding:6px 10px;cursor:pointer;font-weight:600;font-size:14px;background:var(--paper)}
+.chk input{margin-right:6px;accent-color:var(--force)}
+.ledger{font-size:14.5px;margin-top:8px}
+.ledger td,.ledger th{padding:5px 8px}
+.ok{color:var(--pos);font-weight:800}.no{color:var(--neg);font-weight:800}
+.navrow{display:flex;justify-content:space-between;gap:10px;margin-top:14px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>ENG.2 Quiz Prep: 20 Questions You Can Play With</h1>
+    <p>Same 20 question types as the ENG.2 practice quiz, with new numbers. Answer first, then use the lab on the right to SEE why. Drag the sliders and watch the formula update.</p>
+    <p>Use g = 10 m/s², sin 37° = 0.6, cos 37° = 0.8.</p>
+    <div class="sc"><span class="chip">K = ½mv²</span><span class="chip">U<sub>g</sub> = mgh</span><span class="chip">U<sub>s</sub> = ½kx²</span><span class="chip">U<sub>G</sub> = −GMm/r</span><span class="chip">W = Fd cos θ</span><span class="chip">ΔE<sub>system</sub> = W<sub>external</sub></span></div>
+  </div>
+  <div class="card">
+    <div class="qtop"><div class="dots" id="dots"></div><b id="score"></b></div>
+    <div class="qgrid" style="margin-top:14px">
+      <div>
+        <div class="qnum" id="qnum"></div>
+        <div class="qtext" id="qtext"></div>
+        <div id="opts"></div>
+        <div class="btns"><button class="btn" id="hintBtn">Show a hint</button></div>
+        <div class="hint" id="hint"></div>
+        <div class="exp" id="exp"></div>
+        <div class="navrow"><button class="btn" id="prev">&larr; Previous</button><button class="btn" id="reset">Start over</button><button class="btn" id="next">Next &rarr;</button></div>
+      </div>
+      <div class="lab" id="lab"></div>
+    </div>
+  </div>
+</div>
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const NS='http://www.w3.org/2000/svg';
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let raf=null;const stop=()=>{if(raf)cancelAnimationFrame(raf);raf=null;};
+const f1=x=>(Math.abs(x)<1e-9?0:x).toFixed(1),f2=x=>(Math.abs(x)<1e-9?0:x).toFixed(2),f0=x=>Math.round(x).toLocaleString();
+function S(tag,a,parent){const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);if(parent)parent.appendChild(e);return e;}
+function svg(box,w,h){const s=S('svg',{viewBox:`0 0 ${w} ${h}`,role:'img'});box.appendChild(s);return s;}
+function div(box,cls,html){const d=document.createElement('div');if(cls)d.className=cls;if(html)d.innerHTML=html;box.appendChild(d);return d;}
+function slider(box,o,cb){const r=div(box,'ctrl');r.innerHTML=`<label>${o.label}</label><input type="range" min="${o.min}" max="${o.max}" step="${o.step}" value="${o.v}"><output></output>`;const i=r.querySelector('input'),out=r.querySelector('output');const upd=()=>{out.textContent=(+i.value).toFixed(o.dp??1)+(o.unit||'');cb&&cb();};i.addEventListener('input',upd);out.textContent=(+i.value).toFixed(o.dp??1)+(o.unit||'');return{get:()=>+i.value,set:v=>{i.value=v;upd();}};}
+function seg(box,names,idx,cb){const b=div(box,'btns');let cur=idx;const bs=names.map((n,i)=>{const x=document.createElement('button');x.className='btn'+(i===idx?' on':'');x.textContent=n;x.onclick=()=>{cur=i;bs.forEach((y,j)=>y.classList.toggle('on',j===i));cb(i);};b.appendChild(x);return x;});return{get:()=>cur};}
+function button(box,name,cb){const b=div(box,'btns');const x=document.createElement('button');x.className='btn';x.textContent=name;x.onclick=cb;b.appendChild(x);return x;}
+function bars(box,maxAbs,neg){const s=svg(box,520,neg?215:180);s.classList.add('barsv');return items=>{s.innerHTML='';const n=items.length,w=520/n,base=neg?105:140,scale=(neg?85:120)/maxAbs;S('line',{x1:0,x2:520,y1:base,y2:base,stroke:css('--line'),'stroke-width':2},s);items.forEach((it,i)=>{const x=i*w+w*.2,bw=w*.6,hh=Math.min(Math.abs(it.v)*scale,neg?95:130);if(it.off){const t=S('text',{x:x+bw/2,y:base-10,'text-anchor':'middle','font-size':12,fill:css('--zero')},s);t.textContent='not in system';}else{S('rect',{x,y:it.v>=0?base-hh:base,width:bw,height:Math.max(hh,1),rx:6,fill:it.c},s);const t=S('text',{x:x+bw/2,y:it.v>=0?base-hh-6:base+hh+15,'text-anchor':'middle','font-size':13,'font-weight':700,fill:css('--ink')},s);t.textContent=it.t??(f1(it.v)+' J');}const l=S('text',{x:x+bw/2,y:neg?210:172,'text-anchor':'middle','font-size':13,fill:css('--muted')},s);l.textContent=it.name;});};}
+function formula(box){const d=div(box,'formula');return h=>{d.innerHTML=h;};}
+function head(box,t,h){div(box,'labtitle',t);div(box,'labhint',h);}
+function arrow(s,x1,y1,x2,y2,c,w=3){const a=Math.atan2(y2-y1,x2-x1),L=9;S('line',{x1,y1,x2,y2,stroke:c,'stroke-width':w,'stroke-linecap':'round'},s);S('polygon',{points:`${x2},${y2} ${x2-L*Math.cos(a-.45)},${y2-L*Math.sin(a-.45)} ${x2-L*Math.cos(a+.45)},${y2-L*Math.sin(a+.45)}`,fill:c},s);}
+function txt(s,x,y,t,o={}){const e=S('text',Object.assign({x,y,'font-size':13,fill:css('--ink')},o),s);e.textContent=t;return e;}
+function springPath(x1,x2,y,coils=10,amp=9){let p=`M${x1},${y}`;const L=x2-x1;for(let i=1;i<=coils*2;i++){p+=` L${x1+L*i/(coils*2+1)},${y+(i%2?-amp:amp)}`;}return p+` L${x2},${y}`;}
+const KE=()=>css('--ke'),PE=()=>css('--pe'),TH=()=>css('--th'),FO=()=>css('--force');
+
+const LABS={
+ke(box){head(box,'Lab: kinetic energy of a cart','Change the mass and speed. Watch how speed matters MORE because it is squared.');const s=svg(box,520,120);const m=slider(box,{label:'mass m',min:.5,max:6,step:.5,v:3,unit:' kg'},u),v=slider(box,{label:'speed v',min:0,max:10,step:1,v:6,unit:' m/s',dp:0},u);const b=bars(box,300),F=formula(box);let x=20;
+function u(){const K=.5*m.get()*v.get()**2;b([{name:'K',v:K,c:KE()}]);F(`K = ½ m v² = ½ (<span class="v">${f1(m.get())}</span>)(<span class="v">${v.get()}</span>)² = ½ × ${f1(m.get())} × ${v.get()**2} = <span class="r">${f1(K)} J</span><br>Trap: forget the ½ and you get ${f1(2*K)} J.`);}
+function draw(){s.innerHTML='';S('line',{x1:0,x2:520,y1:100,y2:100,stroke:css('--line'),'stroke-width':3},s);const w=40+m.get()*8;S('rect',{x,y:100-14-30,width:w,height:30,rx:6,fill:FO()},s);S('circle',{cx:x+10,cy:92,r:7,fill:css('--ink')},s);S('circle',{cx:x+w-10,cy:92,r:7,fill:css('--ink')},s);if(v.get()>0)arrow(s,x+w+6,70,x+w+6+v.get()*6,70,css('--disp'));x+=v.get()*.6;if(x>520)x=-w;raf=requestAnimationFrame(draw);}u();reduce?draw():draw();},
+ug(box){head(box,'Lab: lifting a box onto a shelf','Ground = zero. Higher shelf or heavier box = more stored energy.');const s=svg(box,520,200);const m=slider(box,{label:'mass m',min:1,max:10,step:.5,v:4,unit:' kg'},u),h=slider(box,{label:'height h',min:0,max:4,step:.5,v:2.5,unit:' m'},u);const b=bars(box,400),F=formula(box);
+function u(){s.innerHTML='';const y=180-h.get()*38;S('line',{x1:0,x2:520,y1:180,y2:180,stroke:css('--line'),'stroke-width':3},s);S('rect',{x:300,y:y,width:160,height:8,fill:css('--muted')},s);S('rect',{x:350,y:y-34,width:44,height:34,rx:4,fill:css('--disp')},s);arrow(s,250,180,250,y,css('--pe'),2);txt(s,190,(180+y)/2,'h = '+f1(h.get())+' m');const U=m.get()*10*h.get();b([{name:'Ug',v:U,c:PE()}]);F(`U<sub>g</sub> = m g h = (<span class="v">${f1(m.get())}</span>)(10)(<span class="v">${f1(h.get())}</span>) = <span class="r">${f1(U)} J</span><br>Trap: m × h only = ${f1(m.get()*h.get())} (forgot g).`);}u();},
+spring(box){head(box,'Lab: squeeze a spring','The compression x is squared, so it is tiny in meters but matters a lot.');const s=svg(box,520,110);const k=slider(box,{label:'spring k',min:100,max:800,step:50,v:400,unit:' N/m',dp:0},u),x=slider(box,{label:'squeeze x',min:0,max:.3,step:.01,v:.15,unit:' m',dp:2},u);const b=bars(box,40),F=formula(box);
+function u(){s.innerHTML='';S('rect',{x:10,y:20,width:14,height:80,fill:css('--muted')},s);const end=330-x.get()*600;S('path',{d:springPath(24,end,60,10,12),fill:'none',stroke:css('--pe'),'stroke-width':3},s);S('rect',{x:end,y:45,width:120,height:30,rx:5,fill:FO()},s);txt(s,end+28,65,'dart',{fill:'#fff','font-weight':700});const U=.5*k.get()*x.get()**2;b([{name:'Us',v:U,c:PE()}]);F(`U<sub>s</sub> = ½ k x² = ½ (<span class="v">${k.get()}</span>)(<span class="v">${f2(x.get())}</span>)² = ½ × ${k.get()} × ${(x.get()**2).toFixed(4)} = <span class="r">${f2(U)} J</span><br>Trap: forget to square x → ½kx = ${f2(.5*k.get()*x.get())} J.`);}u();},
+orbitU(box){head(box,'Lab: gravitational PE in orbit','U = −GMm/r is NEGATIVE and climbs toward 0 as r grows. Moving out = less negative = MORE energy.');const s=svg(box,520,230);const r=slider(box,{label:'new orbit r',min:1,max:4,step:.25,v:3,unit:' R',dp:2},u);const F=formula(box);
+function u(){s.innerHTML='';const R=r.get();S('circle',{cx:110,cy:115,r:20,fill:css('--force')},s);S('circle',{cx:110,cy:115,r:24,fill:'none',stroke:css('--muted'),'stroke-dasharray':'4 4'},s);S('circle',{cx:110,cy:115,r:24*R,fill:'none',stroke:css('--disp'),'stroke-dasharray':'4 4'},s);S('circle',{cx:110+24*R,cy:115,r:5,fill:css('--ink')},s);
+const gx=r=>250+(r-1)*85,gy=U=>30+(-U)*170;S('line',{x1:250,x2:510,y1:30,y2:30,stroke:css('--line')},s);txt(s,455,24,'U = 0',{fill:css('--muted')});let p='';for(let q=1;q<=4;q+=.05)p+=(q===1?'M':'L')+gx(q)+','+gy(-1/q)+' ';S('path',{d:p,fill:'none',stroke:css('--pe'),'stroke-width':3},s);S('circle',{cx:gx(1),cy:gy(-1),r:6,fill:css('--muted')},s);txt(s,gx(1)+8,gy(-1)+4,'start R: −1.00');S('circle',{cx:gx(R),cy:gy(-1/R),r:7,fill:css('--disp')},s);txt(s,gx(R)-20,gy(-1/R)-12,'new: −'+f2(1/R));txt(s,330,222,'r (in units of R) →',{fill:css('--muted')});
+const d=1-1/R;F(`U<sub>i</sub> = −GMm/R &nbsp;→&nbsp; U<sub>f</sub> = −GMm/(<span class="v">${f2(R)}</span>R)<br>ΔU = U<sub>f</sub> − U<sub>i</sub> = −${f2(1/R)} + 1.00 = <span class="r">+${f2(d)} GMm/R</span> (it INCREASES)<br>At r = 3R: ΔU = 1 − 1/3 = <span class="r">+2GMm/(3R)</span>`);}u();},
+scalar(box){head(box,'Lab: direction does not change kinetic energy','Flip a car around. Velocity flips sign, but v² never does.');const s=svg(box,520,130);let dA=1,dB=-1;const sp=slider(box,{label:'speed',min:0,max:30,step:1,v:25,unit:' m/s',dp:0},u);seg(box,['Car A → east','Car A ← west'],0,i=>{dA=i?-1:1;u();});seg(box,['Car B → east','Car B ← west'],1,i=>{dB=i?-1:1;u();});const b=bars(box,600000),F=formula(box);
+function car(y,d,c,lab){const x=d>0?200:260;S('rect',{x:x-40,y:y-16,width:80,height:28,rx:8,fill:c},s);txt(s,x-14,y+3,lab,{fill:'#fff','font-weight':700});arrow(s,x+(d>0?45:-45),y,x+(d>0?45+sp.get()*3:-45-sp.get()*3),y,css('--disp'));txt(s,d>0?400:20,y+4,'v = '+(d*sp.get())+' m/s');}
+function u(){s.innerHTML='';car(35,dA,FO(),'A');car(95,dB,css('--pe'),'B');const K=.5*1500*sp.get()**2;b([{name:'K of car A',v:K,c:KE(),t:f0(K)+' J'},{name:'K of car B',v:K,c:KE(),t:f0(K)+' J'}]);F(`K = ½ (1500)(<span class="v">${dA*sp.get()}</span>)² = ½ (1500)(<span class="v">${dB*sp.get()}</span>)² = <span class="r">${f0(K)} J each</span><br>Energy is a SCALAR: no direction, never negative.`);}u();},
+throwball(box){head(box,'Lab: a ball thrown straight up','Slide the height. K and U trade places, but the total E never changes.');const s=svg(box,520,200);const y=slider(box,{label:'height y',min:0,max:10,step:.5,v:5,unit:' m'},u);const b=bars(box,45),F=formula(box);const m=.4,E=40;
+function u(){s.innerHTML='';S('line',{x1:0,x2:520,y1:190,y2:190,stroke:css('--line'),'stroke-width':3},s);const py=190-y.get()*17;S('circle',{cx:260,cy:py-10,r:10,fill:css('--disp')},s);const U=m*10*y.get(),K=E-U,v=Math.sqrt(2*K/m);if(v>.01)arrow(s,285,py-10,285,py-10-v*3,FO());txt(s,300,py-6,'v = '+f1(v)+' m/s');b([{name:'K',v:K,c:KE()},{name:'Ug',v:U,c:PE()},{name:'E = K + Ug',v:E,c:FO()}]);F(`K = ½(0.40)(<span class="v">${f1(v)}</span>)² = ${f1(K)} J<br>U<sub>g</sub> = (0.40)(10)(<span class="v">${f1(y.get())}</span>) = ${f1(U)} J<br>E = K + U<sub>g</sub> = <span class="r">${f1(E)} J</span> (always)`);}u();},
+coaster(box){head(box,'Lab: frictionless roller coaster','Drag the car along the track. The total stays at 80,000 J.');const s=svg(box,520,180);const p=slider(box,{label:'position',min:0,max:1,step:.01,v:.25,unit:'',dp:2},u);const btn=div(box,'btns');[['Top of hill',.25],['Bottom of dip',.6]].forEach(([n,v])=>{const x=document.createElement('button');x.className='btn';x.textContent=n;x.onclick=()=>p.set(v);btn.appendChild(x);});const b=bars(box,90000),F=formula(box);const U=t=>35000+20000*Math.cos(2*Math.PI*(t-.25)/.7),Y=t=>165-U(t)/550;
+function u(){s.innerHTML='';let d='';for(let t=0;t<=1.001;t+=.01)d+=(t?'L':'M')+(10+t*500)+','+Y(t)+' ';S('path',{d,fill:'none',stroke:css('--muted'),'stroke-width':4},s);const t=p.get();S('circle',{cx:10+t*500,cy:Y(t)-10,r:10,fill:FO()},s);const u=U(t),K=80000-u;b([{name:'K',v:K,c:KE(),t:f0(K)+' J'},{name:'Ug',v:u,c:PE(),t:f0(u)+' J'},{name:'E total',v:80000,c:FO(),t:'80,000 J'}]);F(`E = K + U<sub>g</sub> = <span class="v">${f0(K)}</span> + <span class="v">${f0(u)}</span> = <span class="r">80,000 J</span><br>Top: 25,000 + 55,000. Bottom: 65,000 + 15,000. Same scalar sum.`);}u();},
+glider(box){head(box,'Lab: glider on a spring','Pick a spot and a direction. K is never negative, so E = K + Us just adds.');const s=svg(box,520,110);const x=slider(box,{label:'spring stretch x',min:-.14,max:.14,step:.005,v:.1225,unit:' m',dp:3},u);let dir=-1;seg(box,['moving ← left','moving → right'],0,i=>{dir=i?1:-1;u();});const b=bars(box,7),F=formula(box);const k=600,E=6;
+function u(){s.innerHTML='';S('rect',{x:10,y:20,width:12,height:70,fill:css('--muted')},s);const X=240+x.get()*900;S('path',{d:springPath(22,X,55,10,10),fill:'none',stroke:css('--pe'),'stroke-width':3},s);S('rect',{x:X,y:38,width:80,height:34,rx:6,fill:FO()},s);const Us=.5*k*x.get()**2,K=E-Us;if(K>.01)arrow(s,X+40,25,X+40+dir*40,25,css('--disp'));b([{name:'K',v:K,c:KE()},{name:'Us',v:Us,c:PE()},{name:'E',v:E,c:FO()}]);F(`U<sub>s</sub> = ½(600)(<span class="v">${x.get().toFixed(3)}</span>)² = ${f1(Us)} J<br>K = ${f1(K)} J (moving ${dir<0?'left':'right'}, still positive)<br>E = K + U<sub>s</sub> = <span class="r">6.0 J</span>`);}u();},
+work(box,preset){head(box,'Lab: the sign of work, W = F d cos θ','θ is the angle between the force and the motion. Pick a force and see if energy goes in, out, or nowhere.');const s=svg(box,520,150);const th=slider(box,{label:'angle θ',min:0,max:180,step:5,v:preset,unit:'°',dp:0},u);const bb=div(box,'btns');[['Push (0°)',0],['Tension / normal ⟂ motion (90°)',90],['Friction / drag (180°)',180]].forEach(([n,v])=>{const z=document.createElement('button');z.className='btn';z.textContent=n;z.onclick=()=>th.set(v);bb.appendChild(z);});const F=formula(box);
+function u(){s.innerHTML='';S('rect',{x:200,y:60,width:80,height:50,rx:6,fill:css('--disp')},s);arrow(s,240,135,380,135,css('--muted'));txt(s,385,139,'motion d');const a=th.get()*Math.PI/180;arrow(s,240,85,240+110*Math.cos(a),85-110*Math.sin(a),FO(),4);txt(s,240+120*Math.cos(a)-10,85-120*Math.sin(a),'F');const W=20*3*Math.cos(a);const cls=W>.5?'r':W<-.5?'n':'v';F(`W = F d cos θ = (20)(3.0) cos(<span class="v">${th.get()}°</span>) = <span class="${cls}">${f1(W)} J</span><br>${W>.5?'POSITIVE work: energy goes INTO the system.':W<-.5?'NEGATIVE work: energy goes OUT (friction and drag turn it into thermal energy).':'ZERO work: force is perpendicular, no energy transfer, so mechanical energy stays constant.'}`);}u();},
+fbd(box){head(box,'Lab: read the free-body diagram','Each grid square = 3.0 N. Only forces along the motion change K.');const s=svg(box,520,250);const ap=slider(box,{label:'applied (squares)',min:0,max:6,step:1,v:4,unit:'',dp:0},u),fr=slider(box,{label:'friction (squares)',min:0,max:6,step:1,v:2,unit:'',dp:0},u);const F=formula(box);const g=11,cx=260,cy=125;
+function u(){s.innerHTML='';for(let i=-23;i<=23;i++)S('line',{x1:cx+i*g,x2:cx+i*g,y1:4,y2:246,stroke:css('--grid')},s);for(let j=-11;j<=11;j++)S('line',{x1:0,x2:520,y1:cy+j*g,y2:cy+j*g,stroke:css('--grid')},s);S('rect',{x:cx-14,y:cy-14,width:28,height:28,fill:css('--disp')},s);arrow(s,cx,cy,cx,cy-10*g,css('--pe'));txt(s,cx+6,cy-10*g+12,'Normal 30 N (10 squares)');arrow(s,cx,cy,cx,cy+10*g,css('--muted'));txt(s,cx+6,cy+10*g-4,'Gravity 30 N');if(ap.get())arrow(s,cx+14,cy,cx+14+ap.get()*g,cy,FO());txt(s,cx+20,cy-10,'Applied '+ap.get()*3+' N');if(fr.get())arrow(s,cx-14,cy,cx-14-fr.get()*g,cy,css('--neg'));txt(s,cx-110,cy-10,'Friction '+fr.get()*3+' N');
+const A=ap.get()*3,f=fr.get()*3,net=A-f,dK=net*4;F(`Applied = ${ap.get()} × 3 = ${A} N right, friction = ${fr.get()} × 3 = ${f} N left<br>F<sub>net</sub> = ${A} − ${f} = <span class="v">${net} N</span>&nbsp; (normal and gravity cancel and do zero work)<br>ΔK = W<sub>net</sub> = F<sub>net</sub> d = (${net})(4.0) = <span class="${dK>=0?'r':'n'}">${dK>0?'+':''}${dK} J</span>`);}u();},
+sysSpring(box,start){head(box,'Lab: block and spring, pick your system','The dashed box is your system. Potential energy only lives INSIDE a system that holds both interacting objects.');const s=svg(box,520,120);let sys=start;const p=slider(box,{label:'spring expands',min:0,max:1,step:.02,v:.5,unit:'',dp:2},u);seg(box,['System = block only','System = block + spring'],start,i=>{sys=i;u();});const b=bars(box,6),F=formula(box);
+function u(){s.innerHTML='';S('rect',{x:8,y:20,width:12,height:80,fill:css('--muted')},s);const x=.2*(1-p.get()),X=360-x*900;S('path',{d:springPath(20,X,70,10,12),fill:'none',stroke:css('--pe'),'stroke-width':3},s);S('rect',{x:X,y:52,width:60,height:36,rx:5,fill:FO()},s);txt(s,X+12,75,'block',{fill:'#fff','font-weight':700});S('rect',{x:sys?14:X-8,y:40,width:sys?X+76-14:76,height:60,fill:'none',stroke:css('--disp'),'stroke-width':2,'stroke-dasharray':'6 5',rx:8},s);
+const Us=.5*250*x*x,K=5-Us;if(sys===0){b([{name:'K (inside)',v:K,c:KE()},{name:'Us',off:1},{name:'W by spring (external)',v:K,c:FO()}]);F(`System = block only. The spring is OUTSIDE.<br>The spring pushes: W<sub>external</sub> = <span class="r">+${f1(K)} J</span><br>ΔE<sub>system</sub> = ΔK = W<sub>external</sub> &nbsp;→ the block's energy INCREASES.`);}else{b([{name:'K',v:K,c:KE()},{name:'Us',v:Us,c:PE()},{name:'E = K + Us',v:5,c:FO()}]);F(`System = block + spring. Spring force is INTERNAL, no external work.<br>U<sub>s</sub> = ½(250)(<span class="v">${f2(x)}</span>)² = ${f1(Us)} J, &nbsp;K = ${f1(K)} J<br>E = <span class="r">5.0 J constant</span>: U<sub>s</sub> turns into K inside the system.`);}}u();},
+sled(box){head(box,'Lab: sled with friction, which system keeps ΔE = 0?','Tick what is inside the system. ΔE = 0 only when nothing outside does work.');const s=svg(box,520,150);const opts={earth:false,snow:false};const c=div(box,'chk');c.innerHTML='<label><input type="checkbox" checked disabled>Sled + rider</label><label><input type="checkbox" id="cE">Earth</label><label><input type="checkbox" id="cS">Snowy hill</label>';c.querySelector('#cE').onchange=e=>{opts.earth=e.target.checked;u();};c.querySelector('#cS').onchange=e=>{opts.snow=e.target.checked;u();};const F=formula(box);
+function u(){s.innerHTML='';S('polygon',{points:'20,140 500,140 20,30',fill:opts.snow?css('--disp'):css('--soft'),'fill-opacity':opts.snow?.3:1,stroke:css('--muted')},s);S('rect',{x:120,y:40,width:40,height:20,rx:5,fill:FO(),transform:'rotate(12.8 140 50)'},s);if(opts.earth)txt(s,380,128,'Earth inside: Ug exists',{fill:css('--pe'),'font-weight':700});
+const rows=[['Kinetic energy K','inside','—'],['Gravity',opts.earth?'internal (Ug)':'external work',''],['Friction (thermal)',opts.snow?'internal (thermal stays in)':'external, heat leaks out','']];const ok=opts.earth&&opts.snow;F(`${rows.map(r=>r[0]+': '+r[1]).join('<br>')}<br>${ok?'<span class="r">Sled + Earth + hill: nothing outside does work, ΔE<sub>system</sub> = 0 ✓</span>':'<span class="n">Something outside still does work, so ΔE<sub>system</sub> ≠ 0</span>'}`);}u();},
+vspring(box){head(box,'Lab: hanging spring, which energies live in your system?','The mass bounces. Tick the objects inside your system.');const s=svg(box,520,220);const o={spring:false,earth:true};const c=div(box,'chk');c.innerHTML='<label><input type="checkbox" checked disabled>Mass</label><label><input type="checkbox" id="vS">Spring</label><label><input type="checkbox" id="vE" checked>Earth</label>';c.querySelector('#vS').onchange=e=>{o.spring=e.target.checked;};c.querySelector('#vE').onchange=e=>{o.earth=e.target.checked;};const F=formula(box);let t=0;
+function draw(){s.innerHTML='';S('rect',{x:180,y:6,width:160,height:10,fill:css('--muted')},s);const y=105+40*Math.sin(t);S('path',{d:springPath(16,y,0,9,14).replace(/(\d+\.?\d*),(-?\d+\.?\d*)/g,(m,a,b)=>`${260+ +b},${a}`),fill:'none',stroke:o.spring?css('--pe'):css('--zero'),'stroke-width':3},s);S('rect',{x:235,y,width:50,height:40,rx:6,fill:FO()},s);S('rect',{x:225,y:y-10,width:70,height:60,fill:'none',stroke:css('--disp'),'stroke-width':2,'stroke-dasharray':'6 5'},s);if(o.spring)S('rect',{x:240,y:14,width:40,height:y-14,fill:'none',stroke:css('--disp'),'stroke-width':2,'stroke-dasharray':'6 5'},s);if(o.earth)S('rect',{x:0,y:200,width:520,height:20,fill:css('--soft'),stroke:css('--disp'),'stroke-dasharray':'6 5'},s);
+const en=['Kinetic K'];if(o.spring)en.push('Elastic Us');if(o.earth)en.push('Gravitational Ug');const ext=[];if(!o.spring)ext.push('spring force');if(!o.earth)ext.push('gravity');F(`Energies INSIDE the system: <span class="r">${en.join(', ')}</span><br>Forces from OUTSIDE doing work: <span class="v">${ext.length?ext.join(', '):'none'}</span><br>Rule: a potential energy exists only if BOTH objects are in the system.`);t+=reduce?0:.05;raf=requestAnimationFrame(draw);}draw();},
+orbitE(box){head(box,'Lab: total energy of a circular orbit','K is positive, U is negative and twice as big, so E = K + U is negative.');const r=slider(box,{label:'orbit radius r',min:1,max:4,step:.25,v:2,unit:' R',dp:2},u);const b=bars(box,1,true),F=formula(box);
+function u(){const R=r.get(),K=1/(2*R),U=-1/R,E=-1/(2*R);b([{name:'K',v:K,c:KE(),t:'+'+f2(K)},{name:'U',v:U,c:PE(),t:f2(U)},{name:'E = K + U',v:E,c:FO(),t:f2(E)}]);F(`v² = GM/r, so K = ½mv² = GMm/(2r) = <span class="v">+${f2(K)}</span> GMm/R<br>U = −GMm/r = <span class="v">${f2(U)}</span> GMm/R<br>E = K + U = <span class="r">−GMm/(2r) = ${f2(E)} GMm/R</span>${R===2?'<br>At r = 2R: E = −GMm/(4R)':''}<br>(units: GMm/R)`);}u();},
+incline(box){head(box,'Lab: winch pulls a box up a 37° ramp','Switch the system. Gravity is internal for box + Earth, external for box only.');const s=svg(box,520,200);let sys=0;const d=slider(box,{label:'distance d',min:0,max:4,step:.25,v:4,unit:' m',dp:2},u);seg(box,['System = box + Earth','System = box only'],0,i=>{sys=i;u();});const b=bars(box,700,true),F=formula(box);
+function u(){s.innerHTML='';const x0=60,y0=192,L=300,a=37*Math.PI/180;S('polygon',{points:`${x0},${y0} ${x0+L*Math.cos(a)},${y0} ${x0+L*Math.cos(a)},${y0-L*Math.sin(a)}`,fill:css('--soft'),stroke:css('--muted')},s);const pos=40+d.get()*55;const bx=x0+pos*Math.cos(a),by=y0-pos*Math.sin(a);S('rect',{x:bx-16,y:by-32,width:32,height:32,fill:css('--disp'),transform:`rotate(-37 ${bx} ${by})`},s);S('line',{x1:bx,y1:by-16,x2:x0+L*Math.cos(a),y2:y0-L*Math.sin(a),stroke:FO(),'stroke-width':2},s);txt(s,x0+L*Math.cos(a)+8,y0-L*Math.sin(a)+14,'winch');
+const D=d.get(),W=120*D,dU=8*10*.6*D,dK=72*D;if(sys===0){b([{name:'W winch (ext)',v:W,c:FO()},{name:'ΔK',v:dK,c:KE()},{name:'ΔUg',v:dU,c:PE()}]);F(`System = box + Earth. External work = winch only.<br>W<sub>winch</sub> = F d = (120)(<span class="v">${f2(D)}</span>) = <span class="r">${f0(W)} J</span> = ΔE<sub>system</sub><br>Check: ΔK + ΔU<sub>g</sub> = ${f0(dK)} + ${f0(dU)} = ${f0(dK+dU)} J ✓`);}else{b([{name:'W winch',v:W,c:FO()},{name:'W gravity',v:-dU,c:css('--neg')},{name:'ΔK',v:dK,c:KE()}]);F(`System = box only. Gravity is now EXTERNAL.<br>W<sub>gravity</sub> = −mg sin37° d = −(8)(10)(0.6)(${f2(D)}) = ${f0(-dU)} J<br>W<sub>net</sub> = ${f0(W)} − ${f0(dU)} = <span class="r">${f0(dK)} J = ΔK</span> (this is the trap answer)`);}}u();},
+stopper(box){head(box,'Lab: spring launch, friction stops it','Press play. The spring energy turns into K, then friction turns it all into heat.');const s=svg(box,520,130);const m=slider(box,{label:'mass m',min:1,max:6,step:.5,v:4,unit:' kg'},u),k=slider(box,{label:'spring k',min:200,max:1000,step:50,v:800,unit:' N/m',dp:0},u),x=slider(box,{label:'squeeze x',min:.1,max:.5,step:.05,v:.3,unit:' m',dp:2},u),mu=slider(box,{label:'friction μk',min:.1,max:.5,step:.05,v:.2,unit:'',dp:2},u);let t=0,play=false;button(box,'▶ Play the launch',()=>{t=0;play=true;loop();});const b=bars(box,110),F=formula(box);
+function vals(){const Us=.5*k.get()*x.get()**2,f=mu.get()*m.get()*10;return{Us,f,d:Us/f};}
+function draw(){const {Us,f,d}=vals();s.innerHTML='';S('line',{x1:0,x2:520,y1:100,y2:100,stroke:css('--line'),'stroke-width':3},s);const sc=480/Math.max(d,12);for(let i=0;i<=Math.max(d,12);i++){S('line',{x1:20+i*sc,x2:20+i*sc,y1:100,y2:108,stroke:css('--muted')},s);if(i%2===0)txt(s,16+i*sc,122,i+'m',{'font-size':10,fill:css('--muted')});}const pos=t*d;S('rect',{x:20+pos*sc,y:72,width:30,height:28,rx:4,fill:FO()},s);S('line',{x1:20+d*sc,x2:20+d*sc,y1:60,y2:100,stroke:css('--neg'),'stroke-dasharray':'4 3'},s);txt(s,24+d*sc,58,'stops at '+f1(d)+' m',{fill:css('--neg'),'font-weight':700});const Th=f*pos,K=Math.max(Us-Th,0);b([{name:'Us at start',v:Us,c:PE()},{name:'K now',v:K,c:KE()},{name:'Thermal',v:Th,c:TH()}]);}
+function loop(){draw();if(play&&t<1){t=Math.min(1,t+.01);raf=requestAnimationFrame(loop);}else play=false;}
+function u(){t=0;draw();const {Us,f,d}=vals();F(`U<sub>s</sub> = ½kx² = ½(${k.get()})(${f2(x.get())})² = <span class="v">${f1(Us)} J</span><br>f = μ<sub>k</sub> m g = (${f2(mu.get())})(${f1(m.get())})(10) = <span class="v">${f1(f)} N</span><br>U<sub>s</sub> = f d &nbsp;→ d = ${f1(Us)} / ${f1(f)} = <span class="r">${f2(d)} m</span>`);}u();},
+pendulum(box){head(box,'Lab: pendulum, two system choices','Same motion, two ways to do the bookkeeping. Both give the same speed at the bottom.');const s=svg(box,520,230);let sys=1;const ang=slider(box,{label:'swing position',min:0,max:1,step:.01,v:0,unit:'',dp:2},u);seg(box,['System A = sphere only','System B = sphere + Earth'],1,i=>{sys=i;u();});const b=bars(box,30),F=formula(box);const L=2,h0=1.25,th0=Math.acos(1-h0/L),m=2;
+function u(){s.innerHTML='';const th=th0*(1-ang.get()),px=260+150*Math.sin(th),py=20+150*Math.cos(th);S('line',{x1:160,x2:360,y1:20,y2:20,stroke:css('--muted'),'stroke-width':4},s);S('line',{x1:260,y1:20,x2:px,y2:py,stroke:css('--ink'),'stroke-width':2},s);S('circle',{cx:px,cy:py,r:14,fill:FO()},s);S('line',{x1:200,x2:400,y1:170,y2:170,stroke:css('--line'),'stroke-dasharray':'4 4'},s);txt(s,405,174,'lowest point',{fill:css('--muted')});const h=L*(1-Math.cos(th)),U=m*10*h,K=25-U;if(sys){b([{name:'K',v:K,c:KE()},{name:'Ug',v:U,c:PE()},{name:'E = K + Ug',v:25,c:FO()}]);F(`System B (sphere + Earth): gravity is INTERNAL.<br>h = ${f2(h)} m, U<sub>g</sub> = (2.0)(10)(${f2(h)}) = ${f1(U)} J, K = ${f1(K)} J<br>E = <span class="r">25 J constant</span>`);}else{b([{name:'K',v:K,c:KE()},{name:'Ug',off:1},{name:'W by gravity (ext)',v:K,c:FO()}]);F(`System A (sphere only): no Ug, gravity is EXTERNAL.<br>W<sub>gravity</sub> = mg(1.25 − h) = (2.0)(10)(${f2(h0-h)}) = <span class="r">+${f1(K)} J = ΔK</span><br>At the bottom: +25 J, so v = √(2·25/2.0) = 5.0 m/s`);}}u();},
+};
+
+const Q=[
+{q:'A 3.0 kg cart rolls along a horizontal track at a constant 6.0 m/s. What is the kinetic energy of the cart?',o:['9.0 J','18 J','54 J','108 J','324 J'],a:2,tag:'SC1 · K',lab:['ke'],h:'K = ½mv². Square the speed first.',e:'K = ½(3.0)(6.0)² = ½(3.0)(36) = 54 J. 108 J forgets the ½. 18 J forgets to square v.'},
+{q:'A student lifts a 4.0 kg box from the floor to a shelf 2.5 m high. With the floor as zero, what is the gravitational potential energy of the box-Earth system at the shelf?',o:['100 J','10 J','40 J','200 J','400 J'],a:0,tag:'SC1 · Ug',lab:['ug'],h:'U = mgh, and g = 10.',e:'U = (4.0)(10)(2.5) = 100 J. 10 J forgets g. 40 J is just mg (the weight), not energy.'},
+{q:'A spring launcher has k = 400 N/m and is compressed 0.15 m. What is the elastic potential energy stored in the spring?',o:['2.3 J','4.5 J','9.0 J','30 J','60 J'],a:1,tag:'SC1 · Us',lab:['spring'],h:'Us = ½kx². Square 0.15 first: 0.0225.',e:'Us = ½(400)(0.15)² = 200 × 0.0225 = 4.5 J. 9.0 J forgets the ½. 30 J forgets to square x.'},
+{q:'A probe of mass m orbits a planet of mass M at radius R. It fires thrusters and moves to a circular orbit of radius 3R. How does the gravitational potential energy of the probe-planet system change?',o:['It decreases by a factor of 3.','It increases by 2GmM/(3R).','It stays the same because the system is closed.','It increases by GmM/(3R).','It decreases by 2GmM/(3R).'],a:1,tag:'SC1 · orbit U',lab:['orbitU'],h:'U = −GmM/r is negative. Is −1/3 bigger or smaller than −1?',e:'ΔU = (−GmM/3R) − (−GmM/R) = +2GmM/(3R). Less negative means it INCREASES. "Decreases by a factor of 3" is the trap: the size shrinks but the value goes up.'},
+{q:'Two identical 1500 kg cars drive on a flat road at 25 m/s. Car A goes east and car B goes west. How do their kinetic energies compare?',o:['Car A has more because east is the positive direction.','Car B has negative kinetic energy.','The total kinetic energy of the two cars is zero because the velocities cancel.','Both have the same positive kinetic energy because energy is a scalar.','Car B has more because it moves against the wind.'],a:3,tag:'SC2 · scalar',lab:['scalar'],h:'K uses v², and a squared number is never negative.',e:'K = ½mv² depends on speed, not direction. Both cars have ½(1500)(25)² = 468,750 J. Energy is a scalar, so nothing cancels.'},
+{q:'A 0.40 kg ball is thrown straight up. At one instant it is 5.0 m above the ground moving at 10 m/s. With the ground as zero, what is the total mechanical energy of the ball-Earth system?',o:['40 J','0 J','20 J','60 J','200 J'],a:0,tag:'SC2 · E = K + U',lab:['throwball'],h:'Find K and Ug separately, then ADD.',e:'K = ½(0.40)(10)² = 20 J. Ug = (0.40)(10)(5.0) = 20 J. E = 20 + 20 = 40 J. 0 J subtracts instead of adding.'},
+{q:'A roller coaster car moves on a frictionless track. At the top of a hill it has 25,000 J of kinetic energy and 55,000 J of gravitational potential energy. At the bottom of a dip it has 65,000 J of kinetic energy and 15,000 J of potential energy. Which statement is correct?',o:['The total energy increases by 40,000 J because the car speeds up.','The total is 80,000 J at both points, because mechanical energy is a scalar sum that stays constant.','Mechanical energy is a vector pointing down at the top.','The total decreases by 40,000 J because the car drops.','It cannot be found without the height of the hill.'],a:1,tag:'SC2 · conservation',lab:['coaster'],h:'Add K and U at each point.',e:'Top: 25,000 + 55,000 = 80,000 J. Bottom: 65,000 + 15,000 = 80,000 J. No friction, so the scalar total stays the same.'},
+{q:'A glider on a frictionless air track is attached to a spring. At one instant the spring is stretched and stores 4.5 J, and the glider moves to the LEFT with 1.5 J of kinetic energy. What is the total mechanical energy of the glider-spring system?',o:['−6.0 J, because the glider moves in the negative direction.','3.0 J, because the energies subtract.','6.0 J, because kinetic and potential energy are scalars that add.','6.75 J, because the energies multiply.','0 J, because the spring pulls opposite to the motion.'],a:2,tag:'SC2 · springs',lab:['glider'],h:'Does moving left make K negative?',e:'K is always positive. E = K + Us = 1.5 + 4.5 = 6.0 J. Direction never matters for energy.'},
+{q:'A box slides across a rough carpet and slows down. Friction from the carpet acts opposite to the motion. What does friction do to the box-Earth system?',o:['It does negative work, moving mechanical energy out of the system as thermal energy.','It does positive work and adds mechanical energy.','It does no work because the box stays on the floor.','It changes kinetic energy into potential energy.','It increases the potential energy of the system.'],a:0,tag:'SC3 · friction work',lab:['work',180],h:'Friction and motion point opposite ways. What is cos 180°?',e:'W = Fd cos180° = −Fd. Negative external work takes mechanical energy out of the system and it becomes heat.'},
+{q:'A car rolls through a vertical loop on a frictionless track. The normal force from the track is always perpendicular to the car\'s velocity. How does the normal force affect the mechanical energy of the car-Earth system?',o:['It does positive work at the bottom of the loop.','It does negative work at the top of the loop.','It turns potential energy into kinetic energy.','It turns mechanical energy into thermal energy.','It does zero work, so the mechanical energy stays constant.'],a:4,tag:'SC3 · zero work',lab:['work',90],h:'Perpendicular means θ = 90°. What is cos 90°?',e:'W = Fd cos90° = 0. A force perpendicular to the motion transfers no energy, so with no friction the total stays constant. Same idea as pendulum tension.'},
+{q:'A 3.0 kg block slides 4.0 m to the right across the floor. In its free-body diagram each grid square is 3.0 N. The applied force is 4 squares to the right and friction is 2 squares to the left. How does the kinetic energy of the block change?',o:['It decreases by 24 J.','It stays the same.','It increases by 24 J.','It increases by 48 J.','It increases by 72 J.'],a:2,tag:'SC3 · work-energy',lab:['fbd'],h:'Count squares, multiply by 3 N, then find the NET force along the motion.',e:'Applied = 12 N, friction = 6 N, Fnet = 6 N. ΔK = Fnet·d = 6 × 4.0 = +24 J. 48 J uses the applied force only. 72 J adds the forces.'},
+{q:'A ball is thrown straight UP. While it rises, air resistance acts DOWNWARD on it. How does air resistance affect the ball-Earth system?',o:['It does negative work, moving mechanical energy out of the system as thermal energy.','It does positive work because it points the same way as gravity.','It does zero work because the ball comes back down.','It turns kinetic energy into gravitational potential energy.','It is an internal force that only moves energy around.'],a:0,tag:'SC3 · drag',lab:['work',180],h:'Compare the drag direction with the MOTION, not with gravity.',e:'The ball moves up and drag points down, so θ = 180° and the work is negative. Drag always opposes motion, so it always removes mechanical energy as heat.'},
+{q:'A 0.40 kg block is pushed against a spring (k = 250 N/m), compressing it 0.20 m, then released on a frictionless track. The system is the BLOCK ONLY. How does the system\'s energy change as the spring expands?',o:['Elastic potential energy inside the system turns into kinetic energy.','Total mechanical energy of the system stays constant.','The spring does positive external work on the block, increasing its kinetic energy.','The track\'s normal force does positive work.','Kinetic energy turns into elastic potential energy.'],a:2,tag:'SC4 · system choice',lab:['sysSpring',0],h:'Is the spring inside the dashed box?',e:'The spring is outside the system, so the system has no Us. The spring is an external force doing +5.0 J of work, which becomes the block\'s kinetic energy.'},
+{q:'Same block and spring as before, but now the system is the BLOCK AND THE SPRING. Which statement is true?',o:['The spring does external work on the system.','The system loses mechanical energy to the surroundings.','The normal force carries energy out of the system.','Mechanical energy stays constant as elastic potential energy turns into kinetic energy inside the system.','The kinetic energy stays constant while Us decreases.'],a:3,tag:'SC4 · internal force',lab:['sysSpring',1],h:'The spring is inside now. Can an inside object do EXTERNAL work?',e:'The spring force is internal and conservative. No external work, so E = K + Us = 5.0 J stays constant while Us turns into K.'},
+{q:'A 40 kg sled with a rider slides down a snowy 5.0 m hill, and friction from the snow is significant. A student wants an equation where the total energy of the system stays exactly constant (ΔE = 0). Which objects MUST be in the system?',o:['The sled only.','The sled and Earth only.','The snow and Earth only.','The sled and the snow only.','The sled, Earth, and the snowy hill.'],a:4,tag:'SC4 · closed system',lab:['sled'],h:'Gravity needs Earth inside. Friction heat needs the snow inside.',e:'Earth must be inside to hold Ug, and the hill must be inside to hold the thermal energy from friction. Only then does nothing outside do work.'},
+{q:'A 0.30 kg mass bounces on a vertical spring hanging from the ceiling. The system is the MASS AND EARTH ONLY (the spring is outside). As the mass moves upward, which forms of energy exist inside this system?',o:['Kinetic and elastic potential energy only.','Kinetic and gravitational potential energy only.','Elastic and gravitational potential energy only.','Kinetic, elastic, and gravitational potential energy.','Kinetic energy only.'],a:1,tag:'SC4 · energy forms',lab:['vspring'],h:'Potential energy needs BOTH interacting objects inside the system.',e:'Mass and Earth are inside, so K and Ug exist. The spring is outside, so there is no Us; the spring force does external work instead.'},
+{q:'A satellite of mass m moves in a circular orbit of radius 2R around a planet of mass M with speed v = √(GM/2R). What is the total mechanical energy of the satellite-planet system?',o:['+GmM/(4R)','0','−GmM/(2R)','−GmM/(4R)','−3GmM/(4R)'],a:3,tag:'SC1 + SC2 · orbit E',lab:['orbitE'],h:'K = ½mv², U = −GmM/(2R). Then add.',e:'K = ½m(GM/2R) = GmM/(4R). U = −GmM/(2R). E = GmM/(4R) − GmM/(2R) = −GmM/(4R).'},
+{q:'An 8.0 kg box starts at rest at the bottom of a frictionless 37° ramp. A winch pulls it 4.0 m up the ramp with a constant 120 N force parallel to the ramp. The system is the box and Earth. What is the change in the total mechanical energy of the system?',o:['0 J, because the ramp is frictionless.','+192 J, because Ug increases by 192 J.','+288 J, because the net work is 288 J.','+672 J, because the winch and gravity both do work.','+480 J, because the winch does 480 J of external work.'],a:4,tag:'SC3 + SC4 · external work',lab:['incline'],h:'ΔE of the system = work by forces from OUTSIDE the system. Is gravity outside?',e:'Gravity is internal to box + Earth. Only the winch is external: W = (120)(4.0) = +480 J. Check: ΔK = 288 J and ΔUg = (8)(10)(0.6)(4) = 192 J, total 480 J. 288 J is the trap (net work = ΔK only).'},
+{q:'A 4.0 kg block is pushed against a horizontal spring (k = 800 N/m), compressing it 0.30 m. It is released from rest and slides on a rough floor with μk = 0.20. How far does it travel from the release point before stopping?',o:['2.3 m','4.5 m','9.0 m','15 m','45 m'],a:1,tag:'SC1 + SC3 · friction',lab:['stopper'],h:'All the spring energy is eaten by friction: ½kx² = μk m g d.',e:'Us = ½(800)(0.30)² = 36 J. f = (0.20)(4.0)(10) = 8.0 N. d = 36/8.0 = 4.5 m. 9.0 m forgets the ½, 15 m forgets to square x, 45 m forgets g.'},
+{q:'A 2.0 kg pendulum bob is released from rest 1.25 m above its lowest point. System A is the bob only. System B is the bob and Earth. Which comparison is correct as it swings to the bottom?',o:['In A, mechanical energy stays at 25 J. In B, it increases by 25 J.','Both systems start with 25 J of gravitational potential energy.','In A, gravity does +25 J of external work. In B, mechanical energy stays constant at 25 J.','In A, energy is conserved. In B, gravity does external work.','The speed at the bottom depends on which system you choose.'],a:2,tag:'SC2 + SC4 · two systems',lab:['pendulum'],h:'Which system has Earth inside? Only that one can have Ug.',e:'System A has no Ug, so gravity is external and does mg·h = (2.0)(10)(1.25) = +25 J of work, which becomes K. System B holds Ug, so E stays 25 J. Same speed either way: 5.0 m/s.'},
+];
+
+const KEYS='eng2-prep-v1';let st={cur:0,ans:{}};try{const x=JSON.parse(localStorage.getItem(KEYS)||'null');if(x&&typeof x.cur==='number')st=x;}catch(e){}
+const save=()=>{try{localStorage.setItem(KEYS,JSON.stringify(st));}catch(e){}};let hintOn=false,last=-1;
+function render(){const q=Q[st.cur];const d=$('dots');d.innerHTML='';Q.forEach((_,i)=>{const b=document.createElement('button');b.className='dot'+(i===st.cur?' cur':'')+(st.ans[i]!=null?(st.ans[i]===Q[i].a?' ok':' bad'):'');b.textContent=i+1;b.onclick=()=>{st.cur=i;save();render();};d.appendChild(b);});
+const done=Object.keys(st.ans).length,right=Object.keys(st.ans).filter(i=>st.ans[i]===Q[i].a).length;$('score').textContent=`${right} / ${done} correct`;
+$('qnum').innerHTML=`Question ${st.cur+1} of 20 <span class="qtag">${q.tag}</span>`;$('qtext').textContent=q.q;const box=$('opts');box.innerHTML='';const p=st.ans[st.cur];
+q.o.forEach((t,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=String.fromCharCode(65+i)+'. '+t;if(p!=null){if(i===q.a)b.classList.add('right');else if(i===p)b.classList.add('wrong');}b.onclick=()=>{if(st.ans[st.cur]!=null)return;st.ans[st.cur]=i;save();render();};box.appendChild(b);});
+if(st.cur!==last){stop();hintOn=false;last=st.cur;const lab=$('lab');lab.innerHTML='';LABS[q.lab[0]](lab,q.lab[1]);}
+$('hint').style.display=hintOn&&p==null?'block':'none';$('hint').innerHTML='<p><b>Hint.</b> '+q.h+'</p>';$('hintBtn').style.display=p==null?'':'none';$('hintBtn').textContent=hintOn?'Hide the hint':'Show a hint';
+const ex=$('exp');if(p!=null){ex.classList.add('show');ex.innerHTML=`<p><b>${p===q.a?'Correct!':'Not quite. The answer is '+String.fromCharCode(65+q.a)+'.'}</b></p><p>${q.e}</p>`;}else{ex.classList.remove('show');ex.innerHTML='';}}
+$('hintBtn').onclick=()=>{hintOn=!hintOn;render2();};
+function render2(){const q=Q[st.cur],p=st.ans[st.cur];$('hint').style.display=hintOn&&p==null?'block':'none';$('hintBtn').textContent=hintOn?'Hide the hint':'Show a hint';}
+$('prev').onclick=()=>{st.cur=(st.cur+19)%20;save();render();};$('next').onclick=()=>{st.cur=(st.cur+1)%20;save();render();};$('reset').onclick=()=>{st={cur:0,ans:{}};save();last=-1;render();};
+render();
+})();
+</script>
+</body>
+</html>
